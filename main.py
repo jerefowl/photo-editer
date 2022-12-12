@@ -1,6 +1,5 @@
-from PIL import Image
-
 from PIL import Image, ImageEnhance
+
 
 def edit_image():
     filename = 'mountain.jpg'
@@ -13,8 +12,8 @@ def edit_image():
     print("2 - Change Colour")
     print("3 - Rotate")
     print("4 - Enhance")
+    print("5 - Change file type")
     choice = input("Choice: ")
-
 
     choice_num = int(choice)
 
@@ -77,13 +76,20 @@ def edit_image():
         contrast_image = contrast.enhance(contrast_factor)
         contrast_image.show()
 
+    if choice_num == 5:
+        print("Enter a new filename with type extension")
+        new_filename = input("Filename: ")
+        image.save(new_filename)
+        print(new_filename + " saved.")
+        new_image = Image.open(new_filename)
+        new_image.show()
+
 
 edit = 1
 while edit:
     edit_image()
     another = input("Do you want to edit again? (Y/N): ")
-    if another == "Y" or "y":
+    if another == "Y" or another == "y":
         edit = 1
     else:
         edit = 0
-
